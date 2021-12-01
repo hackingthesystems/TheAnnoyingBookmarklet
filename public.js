@@ -166,7 +166,6 @@ function initChildWindow() {
     detectWindowClose()
     triggerFileDownload()
     speak()
-    rainbowThemeColor()
     animateUrlWithEmojis()
 
     interceptUserInput(event => {
@@ -188,9 +187,7 @@ function initParentWindow() {
             registerProtocolHandlers()
             attemptToTakeoverReferrerWindow()
             hideCursor()
-            startVideo()
             startAlertInterval()
-            rainbowThemeColor()
             animateUrlWithEmojis()
             speak('That was a mistake')
         }
@@ -667,23 +664,6 @@ function detectWindowClose() {
 function onCloseWindow(win) {
     const i = wins.indexOf(win)
     if (i >= 0) wins.splice(i, 1)
-}
-
-
-/**
- * Change the theme color of the browser in a loop.
- */
-function rainbowThemeColor() {
-    function zeroFill(width, number, pad = '0') {
-        width -= number.toString().length
-        if (width > 0) return new Array(width + (/\./.test(number) ? 2 : 1)).join(pad) + number
-        return number + ''
-    }
-
-    const meta = document.querySelector('meta.theme-color')
-    setInterval(() => {
-        meta.setAttribute('content', '#' + zeroFill(6, Math.floor(Math.random() * 16777215).toString(16)))
-    }, 50)
 }
 
 /**
