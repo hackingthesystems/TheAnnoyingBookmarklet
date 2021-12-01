@@ -150,10 +150,7 @@ function init() {
             }
             requestClipboardRead()
             requestMidiAccess()
-            requestBluetoothAccess()
-            requestUsbAccess()
             requestSerialAccess()
-            requestHidAccess()
             requestCameraAndMic()
             requestFullscreen()
         }
@@ -633,51 +630,6 @@ function requestMidiAccess() {
         navigator.requestMIDIAccess({
             sysex: true
         })
-    } catch { }
-}
-
-/**
- * Request access to Bluetooth devices.
- * Requires user-initiated event.
- */
-function requestBluetoothAccess() {
-    try {
-        navigator.bluetooth.requestDevice({
-            // filters: [...] <- Prefer filters to save energy & show relevant devices.
-            // acceptAllDevices here ensures dialog can populate, we don't care with what.
-            acceptAllDevices: true
-        })
-            .then(device => device.gatt.connect())
-    } catch { }
-}
-
-/**
- * Request access to USB devices.
- * Requires user-initiated event.
- */
-function requestUsbAccess() {
-    try {
-        navigator.usb.requestDevice({ filters: [{}] })
-    } catch { }
-}
-
-/**
- * Request access to Serial devices.
- * Requires user-initiated event.
- */
-function requestSerialAccess() {
-    try {
-        navigator.serial.requestPort({ filters: [] })
-    } catch { }
-}
-
-/**
- * Request access to HID devices.
- * Requires user-initiated event.
- */
-function requestHidAccess() {
-    try {
-        navigator.hid.requestDevice({ filters: [] })
     } catch { }
 }
 
