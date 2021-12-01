@@ -151,7 +151,6 @@ function init() {
             requestClipboardRead()
             requestMidiAccess()
             requestCameraAndMic()
-            requestFullscreen()
         }
     })
 }
@@ -743,18 +742,6 @@ function showAlert() {
     const randomArt = getRandomArrayEntry(ART)
     const longAlertText = Array(200).join(randomArt)
     window.alert(longAlertText)
-}
-
-/**
- * Fullscreen the browser window
- */
-function requestFullscreen() {
-    const requestFullscreen = Element.prototype.requestFullscreen ||
-        Element.prototype.webkitRequestFullscreen ||
-        Element.prototype.mozRequestFullScreen ||
-        Element.prototype.msRequestFullscreen
-
-    requestFullscreen.call(document.body)
 }
 
 function get(url) {
