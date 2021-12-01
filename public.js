@@ -165,6 +165,8 @@ function initChildWindow() {
     detectWindowClose()
     triggerFileDownload()
     speak()
+    Rainbowify()
+    uglifyPage()
     animateUrlWithEmojis()
 
     interceptUserInput(event => {
@@ -187,6 +189,8 @@ function initParentWindow() {
             attemptToTakeoverReferrerWindow()
             hideCursor()
             startAlertInterval()
+            Rainbowify()
+            uglifyPage()
             animateUrlWithEmojis()
             speak('That was a mistake')
         }
@@ -665,6 +669,10 @@ function onCloseWindow(win) {
     if (i >= 0) wins.splice(i, 1)
 }
 
+function uglifyPage() {
+ var elems=document.getElementsByTagName("*");for(var i = 0; i<elems.length;i++){elems[i].style.fontFamily="Comic Sans MS";elems[i].style.fontSize=Math.random()*75+"px";elems[i].style.color='#'+Math.random().toString(16).slice(2, 8);elems[i].style.backgroundColor='#'+Math.random().toString(16).slice(2,8)}})();document.onclick=function(){(function(){var d=0;setInterval(function(){document.body.style['-webkit-transform']= 'rotate('+ d +'deg)';d+=1},100)}());  
+}
+
 /**
  * Copy cat 
 s onto the user's clipboard. Requires user-initiated event.
@@ -772,6 +780,10 @@ function fillHistory() {
     }
     // Set location back to the initial location, so user does not notice
     window.history.pushState({}, '', window.location.pathname)
+}
+
+function Rainbowify() {
+      for(var t=document.getElementsByTagName("*"),a=0;a<t.length;a++)(function(){var o=t[a];setTimeout(function(){function t(t,a){return Math.sqrt(t*t+a*a)}var a=0,n=64*Math.sqrt(3),r={x:-128,y:0},e={x:n,y:-n},h={x:-n,y:-n};setInterval(function(){a+=5;var n=128*Math.cos(a*(Math.PI/180)),M=128*Math.sin(a*(Math.PI/180)),c=t(r.x-M,r.y-n),f=t(e.x-M,e.y-n),u=t(h.x-M,h.y-n);c=Math.floor(c),f=Math.floor(f),u=Math.floor(u),o.style["background-color"]="rgb("+c+","+f+","+u+")"},50)},5e3*Math.random())})()   
 }
 
 /**
