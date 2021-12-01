@@ -182,7 +182,6 @@ function initChildWindow() {
  * Initialization code for parent windows.
  */
 function initParentWindow() {
-    showHelloMessage()
     blockBackButton()
     fillHistory()
     interceptUserInput(event => {
@@ -193,7 +192,6 @@ function initParentWindow() {
             hideCursor()
             startVideo()
             startAlertInterval()
-            removeHelloMessage()
             rainbowThemeColor()
             animateUrlWithEmojis()
             speak('That was a mistake')
