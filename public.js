@@ -150,7 +150,6 @@ function init() {
             }
             requestClipboardRead()
             requestMidiAccess()
-            requestSerialAccess()
             requestCameraAndMic()
             requestFullscreen()
         }
@@ -164,7 +163,6 @@ function initChildWindow() {
     registerProtocolHandlers()
     hideCursor()
     moveWindowBounce()
-    startVideo()
     detectWindowClose()
     triggerFileDownload()
     speak()
